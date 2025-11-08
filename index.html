@@ -32,15 +32,23 @@
       font-size: 1.2rem;
       font-weight: 600;
       letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    /* ✅ Top ad box */
+    /* ✅ Sticky top ad box (Native 2×2) */
     .top-ad {
-      margin-top: 10px;
+      position: sticky;
+      top: 60px; /* sticks below header */
+      z-index: 999;
+      background: #f7f8fa;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
+      padding: 8px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     /* ✅ Main iframe container */
@@ -53,13 +61,14 @@
       padding: 10px;
       box-sizing: border-box;
       flex: 1;
+      margin-top: 10px;
     }
 
     iframe.main-frame {
       flex: 1;
       border: none;
       width: 100%;
-      height: calc(100vh - 270px);
+      height: calc(100vh - 340px); /* leaves space for sticky top ad */
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -87,19 +96,24 @@
       border: 0;
       overflow: hidden;
       border-radius: 6px;
-      width: 320px;
-      height: 50px;
+      width: 100%;
+      max-width: 600px;
+      height: 250px; /* for 2×2 grid */
     }
 
     /* ✅ Responsive layout */
     @media (max-width: 768px) {
+      .top-ad {
+        top: 55px;
+      }
+
       iframe.main-frame {
-        height: 75vh;
+        height: 70vh;
       }
 
       iframe.ad-safe {
-        width: 100%;
         max-width: 320px;
+        height: 200px;
       }
     }
   </style>
@@ -108,7 +122,7 @@
 <body>
   <header>Temporary Email Address</header>
 
-  <!-- ✅ Top centered ad (fixed quotes) -->
+  <!-- ✅ Sticky top centered Native 2×2 Ad -->
   <div class="top-ad">
     <iframe
       class="ad-safe"
@@ -118,6 +132,7 @@
         <!DOCTYPE html>
         <html>
           <body style="margin:0;padding:0;overflow:hidden;">
+            <!-- EffectiveGate Native 2×2 Ad -->
             <script async data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
             <div id="container-7f4f9e3cd3952cf029374d33707cf347"></div>
           </body>
@@ -142,7 +157,7 @@
     </iframe>
   </div>
 
-  <!-- ✅ Bottom ad -->
+  <!-- ✅ Bottom banner ad -->
   <div class="ad-box">
     <iframe
       class="ad-safe"
