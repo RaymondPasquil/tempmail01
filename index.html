@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Embedded Temp Mail Service" />
+
+  <!-- ✅ Google AdSense site verification -->
+  <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
+
+  <title>Temp Mail - Embedded</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f7f8fa;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header {
+      width: 100%;
+      padding: 1rem;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 1200px;
+      height: calc(100vh - 80px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .no-iframe {
+      text-align: center;
+      padding: 2rem;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: calc(100vh - 100px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>Temp Mail - Embedded Viewer</header>
+
+  <iframe
+    src="https://tempmail-f46o.onrender.com/"
+    title="Temp Mail"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+    referrerpolicy="no-referrer"
+  >
+    <div class="no-iframe">
+      Sorry, your browser does not support iframes.  
+      <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
+    </div>
+  </iframe>
+</body>
+</html>
