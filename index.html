@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Temp Mail Embedded with Responsive Ads" />
   <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
-  <title>Temp Mail - Clean Layout with Ads</title>
+  <title>Temp Mail - Clean Layout with Vertical Ads</title>
 
   <style>
     /* ===== Base styling ===== */
@@ -38,7 +38,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 15px;
+      gap: 25px;
       margin-top: 15px;
       padding: 0 10px;
     }
@@ -73,6 +73,7 @@
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: block;
     }
 
     .ad-top {
@@ -86,16 +87,26 @@
       height: 50px;
     }
 
+    /* ✅ Vertical side ads - taller look, no scroll */
     .ad-side {
       position: sticky;
       top: 100px;
-      height: 600px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .ad-side iframe {
       width: 160px;
       height: 600px;
+      overflow: hidden;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
     }
 
+    /* ✅ Floating bottom ad */
     .ad-floating {
       position: fixed;
       bottom: 15px;
@@ -116,9 +127,10 @@
       .page-container {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
       }
       .ad-side {
-        display: none; /* hide side ads on small screens */
+        display: none; /* hide side ads on smaller screens */
       }
       iframe.main-frame {
         height: 70vh;
@@ -136,15 +148,16 @@
   <header>Temporary Email Address</header>
 
   <div class="page-container">
-    <!-- ✅ Left Sticky Ad -->
+    <!-- ✅ Left Vertical Ad -->
     <div class="ad-side">
       <iframe
         class="ad-safe"
+        scrolling="no"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         referrerpolicy="no-referrer"
         srcdoc='
           <!DOCTYPE html>
-          <html><body style="margin:0;padding:0;">
+          <html><body style="margin:0;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;">
             <script>
               window.atOptions = {
                 key: "bbe4474f5e42c54d7802cff78dd8454f",
@@ -165,11 +178,12 @@
       <div class="ad-top">
         <iframe
           class="ad-safe"
+          scrolling="no"
           sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
           referrerpolicy="no-referrer"
           srcdoc='
             <!DOCTYPE html>
-            <html><body style="margin:0;padding:0;">
+            <html><body style="margin:0;padding:0;overflow:hidden;">
               <script>
                 window.atOptions = {
                   key: "bbe4474f5e42c54d7802cff78dd8454f",
@@ -200,15 +214,16 @@
       </iframe>
     </div>
 
-    <!-- ✅ Right Sticky Ad -->
+    <!-- ✅ Right Vertical Ad -->
     <div class="ad-side">
       <iframe
         class="ad-safe"
+        scrolling="no"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         referrerpolicy="no-referrer"
         srcdoc='
           <!DOCTYPE html>
-          <html><body style="margin:0;padding:0;">
+          <html><body style="margin:0;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;">
             <script>
               window.atOptions = {
                 key: "bbe4474f5e42c54d7802cff78dd8454f",
@@ -228,11 +243,12 @@
   <div class="ad-floating">
     <iframe
       class="ad-safe"
+      scrolling="no"
       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       referrerpolicy="no-referrer"
       srcdoc='
         <!DOCTYPE html>
-        <html><body style="margin:0;padding:0;">
+        <html><body style="margin:0;padding:0;overflow:hidden;">
           <script>
             window.atOptions = {
               key: "bbe4474f5e42c54d7802cff78dd8454f",
