@@ -8,7 +8,7 @@
   <!-- ✅ Google AdSense verification -->
   <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
 
-  <title>Temp Mail - Embedded</title>
+  <title>Free  Email Address </title>
 
   <style>
     html, body {
@@ -20,7 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      overflow-x: hidden;
     }
 
     header {
@@ -39,7 +39,7 @@
       justify-content: center;
       align-items: flex-start;
       width: 100%;
-      max-width: 1300px;
+      max-width: 1400px;
       padding: 10px;
       box-sizing: border-box;
       gap: 10px;
@@ -47,10 +47,10 @@
     }
 
     iframe.main-frame {
+      flex: 1;
       border: none;
       width: 100%;
-      max-width: 1100px;
-      height: calc(100vh - 180px);
+      height: calc(100vh - 200px);
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -71,6 +71,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      position: sticky;
+      top: 10px;
+      height: fit-content;
     }
 
     /* ✅ Bottom ad box */
@@ -83,6 +86,15 @@
       width: 100%;
     }
 
+    iframe.ad-safe {
+      border: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      width: 320px;
+      height: 50px;
+    }
+
+    /* ✅ Responsive design */
     @media (max-width: 992px) {
       .main-container {
         flex-direction: column;
@@ -92,11 +104,16 @@
       .right-ad {
         width: 100%;
         min-width: auto;
-        order: 2;
+        position: relative;
       }
 
       iframe.main-frame {
-        height: calc(100vh - 200px);
+        height: 70vh;
+      }
+
+      iframe.ad-safe {
+        width: 100%;
+        max-width: 320px;
       }
     }
   </style>
@@ -121,16 +138,30 @@
       </div>
     </iframe>
 
-    <!-- ✅ Right-side ad -->
+    <!-- ✅ Right-side ad (sandboxed to prevent redirect) -->
     <div class="right-ad">
-      <script async="async" data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
-      <div id="container-7f4f9e3cd3952cf029374d33707cf347"></div>
+      <iframe
+        class="ad-safe"
+        sandbox="allow-scripts allow-same-origin"
+        referrerpolicy="no-referrer"
+        srcdoc="
+          <!DOCTYPE html>
+          <html>
+            <body style='margin:0;padding:0;overflow:hidden;'>
+              <script async='async' data-cfasync='false' src='//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js'></script>
+              <div id='container-7f4f9e3cd3952cf029374d33707cf347'></div>
+            </body>
+          </html>"
+      ></iframe>
     </div>
   </div>
 
-  <!-- ✅ Bottom ad (kept from your original layout) -->
+  <!-- ✅ Bottom ad (kept from your original layout, sandboxed safely) -->
   <div class="ad-box">
     <iframe
+      class="ad-safe"
+      sandbox="allow-scripts allow-same-origin allow-popups-to-escape-sandbox"
+      referrerpolicy="no-referrer"
       srcdoc="<!DOCTYPE html>
         <html>
           <body style='margin:0;padding:0;overflow:hidden;'>
@@ -146,10 +177,6 @@
             <script src='https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js' async></script>
           </body>
         </html>"
-      width="320"
-      height="50"
-      sandbox="allow-scripts allow-same-origin allow-popups-to-escape-sandbox"
-      style="border:0;overflow:hidden;border-radius:6px;"
       title="Advertisement"
     ></iframe>
   </div>
