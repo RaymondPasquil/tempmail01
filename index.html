@@ -95,4 +95,95 @@
     }
 
     /* ✅ Responsive design */
-    @media (max-width: 1100px)
+    @media (max-width: 1100px) {
+      .main-container {
+        max-width: 100%;
+        padding: 0;
+        gap: 0;
+      }
+
+      iframe.main-frame {
+        max-width: 100%;
+      }
+
+      .right-ad {
+        display: none !important; /* Hide right ad on smaller screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      iframe.main-frame {
+        height: 75vh;
+      }
+
+      iframe.ad-safe {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>Temp Mail - Embedded Viewer</header>
+
+  <div class="main-container">
+    <!-- ✅ Embedded Temp Mail site -->
+    <iframe
+      class="main-frame"
+      src="https://tempmail-f46o.onrender.com/"
+      title="Temp Mail"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      referrerpolicy="no-referrer"
+    >
+      <div class="no-iframe">
+        Sorry, your browser does not support iframes.  
+        <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
+      </div>
+    </iframe>
+
+    <!-- ✅ Right-side ad (clickable but sandboxed safely) -->
+    <div class="right-ad">
+      <iframe
+        class="ad-safe"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        referrerpolicy="no-referrer"
+        srcdoc="
+          <!DOCTYPE html>
+          <html>
+            <body style='margin:0;padding:0;overflow:hidden;'>
+              <script async='async' data-cfasync='false' src='//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js'></script>
+              <div id='container-7f4f9e3cd3952cf029374d33707cf347'></div>
+            </body>
+          </html>"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- ✅ Bottom ad (clickable and safe) -->
+  <div class="ad-box">
+    <iframe
+      class="ad-safe"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      referrerpolicy="no-referrer"
+      srcdoc="<!DOCTYPE html>
+        <html>
+          <body style='margin:0;padding:0;overflow:hidden;'>
+            <script>
+              window.atOptions = {
+                key: 'bbe4474f5e42c54d7802cff78dd8454f',
+                format: 'iframe',
+                height: 50,
+                width: 320,
+                params: {}
+              };
+            </script>
+            <script src='https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js' async></script>
+          </body>
+        </html>"
+      title="Advertisement"
+    ></iframe>
+  </div>
+</body>
+</html>
