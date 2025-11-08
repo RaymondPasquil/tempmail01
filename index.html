@@ -34,30 +34,40 @@
       z-index: 1000;
     }
 
-    /* ✅ Sticky top ad box (2x2 native) */
-    .top-ad {
-      position: sticky;
-      top: 60px;
-      z-index: 999;
-      background: #f7f8fa;
+    /* Ad container styling */
+    .ad-box, .top-ad {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
       padding: 8px 0;
+      background: #f7f8fa;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     iframe.ad-safe {
       border: 0;
       overflow: hidden;
       border-radius: 6px;
-      width: 100%;
-      max-width: 700px; /* give enough width for 2x2 layout */
-      height: 350px;     /* increased to fit all 4 ad tiles */
     }
 
-    /* ✅ Main iframe container */
+    /* Bottom ad (now top) size */
+    .ad-box iframe.ad-safe {
+      width: 320px;
+      height: 50px;
+      max-width: 320px;
+    }
+
+    /* Native 2x2 ad (now bottom) size */
+    .top-ad iframe.ad-safe {
+      width: 100%;
+      max-width: 700px;
+      height: 350px;
+    }
+
+    /* Main iframe container */
     .main-container {
       display: flex;
       justify-content: center;
@@ -67,14 +77,13 @@
       padding: 10px;
       box-sizing: border-box;
       flex: 1;
-      margin-top: 10px;
     }
 
     iframe.main-frame {
       flex: 1;
       border: none;
       width: 100%;
-      height: calc(100vh - 380px);
+      height: calc(100vh - 430px); /* adjust height to accommodate ads */
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -87,29 +96,15 @@
       font-size: 1rem;
     }
 
-    /* ✅ Bottom ad */
-    .ad-box {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    /* ✅ Responsive layout */
+    /* Responsive */
     @media (max-width: 768px) {
-      .top-ad {
-        top: 55px;
-      }
-
       iframe.main-frame {
         height: 70vh;
       }
 
-      iframe.ad-safe {
+      .top-ad iframe.ad-safe {
         max-width: 340px;
-        height: 250px; /* slightly smaller for mobile */
+        height: 250px;
       }
     }
   </style>
@@ -118,46 +113,10 @@
 <body>
   <header>Temporary Email Address</header>
 
-  <!-- ✅ Sticky top centered Native 2×2 Ad -->
-  <div class="top-ad">
-    <iframe
-      class="ad-safe"
-      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-      referrerpolicy="no-referrer"
-      srcdoc='
-        <!DOCTYPE html>
-        <html>
-          <body style="margin:0;padding:0;overflow:hidden;background:#f7f8fa;">
-            <!-- EffectiveGate Native 2×2 Ad -->
-            <script async data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
-            <div id="container-7f4f9e3cd3952cf029374d33707cf347" style="width:100%;height:100%;"></div>
-          </body>
-        </html>'
-    ></iframe>
-  </div>
-
-  <!-- ✅ Embedded Temp Mail site -->
-  <div class="main-container">
-    <iframe
-      class="main-frame"
-      src="https://tempmail-f46o.onrender.com/"
-      title="Temp Mail"
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-      referrerpolicy="no-referrer"
-    >
-      <div class="no-iframe">
-        Sorry, your browser does not support iframes.  
-        <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
-      </div>
-    </iframe>
-  </div>
-
-  <!-- ✅ Bottom banner ad -->
+  <!-- Bottom banner ad moved TO TOP -->
   <div class="ad-box">
     <iframe
       class="ad-safe"
-      style="height:60px;max-width:320px;"
       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       referrerpolicy="no-referrer"
       srcdoc='
@@ -177,6 +136,41 @@
           </body>
         </html>'
       title="Advertisement"
+    ></iframe>
+  </div>
+
+  <!-- Embedded Temp Mail site -->
+  <div class="main-container">
+    <iframe
+      class="main-frame"
+      src="https://tempmail-f46o.onrender.com/"
+      title="Temp Mail"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      referrerpolicy="no-referrer"
+    >
+      <div class="no-iframe">
+        Sorry, your browser does not support iframes.  
+        <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
+      </div>
+    </iframe>
+  </div>
+
+  <!-- Native 2x2 ad moved TO BOTTOM -->
+  <div class="top-ad">
+    <iframe
+      class="ad-safe"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      referrerpolicy="no-referrer"
+      srcdoc='
+        <!DOCTYPE html>
+        <html>
+          <body style="margin:0;padding:0;overflow:hidden;background:#f7f8fa;">
+            <!-- EffectiveGate Native 2×2 Ad -->
+            <script async data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
+            <div id="container-7f4f9e3cd3952cf029374d33707cf347" style="width:100%;height:100%;"></div>
+          </body>
+        </html>'
     ></iframe>
   </div>
 </body>
