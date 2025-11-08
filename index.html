@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Embedded Temp Mail Service" />
-
-  <!-- ✅ Google AdSense verification -->
   <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
-
   <title>Temp Mail - Embedded</title>
 
   <style>
@@ -37,10 +34,10 @@
       z-index: 1000;
     }
 
-    /* ✅ Sticky top ad box (Native 2×2) */
+    /* ✅ Sticky top ad box (2x2 native) */
     .top-ad {
       position: sticky;
-      top: 60px; /* sticks below header */
+      top: 60px;
       z-index: 999;
       background: #f7f8fa;
       display: flex;
@@ -49,6 +46,15 @@
       width: 100%;
       padding: 8px 0;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    iframe.ad-safe {
+      border: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 700px; /* give enough width for 2x2 layout */
+      height: 350px;     /* increased to fit all 4 ad tiles */
     }
 
     /* ✅ Main iframe container */
@@ -68,7 +74,7 @@
       flex: 1;
       border: none;
       width: 100%;
-      height: calc(100vh - 340px); /* leaves space for sticky top ad */
+      height: calc(100vh - 380px);
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -91,16 +97,6 @@
       width: 100%;
     }
 
-    /* ✅ Generic ad iframe styling */
-    iframe.ad-safe {
-      border: 0;
-      overflow: hidden;
-      border-radius: 6px;
-      width: 100%;
-      max-width: 600px;
-      height: 250px; /* for 2×2 grid */
-    }
-
     /* ✅ Responsive layout */
     @media (max-width: 768px) {
       .top-ad {
@@ -112,8 +108,8 @@
       }
 
       iframe.ad-safe {
-        max-width: 320px;
-        height: 200px;
+        max-width: 340px;
+        height: 250px; /* slightly smaller for mobile */
       }
     }
   </style>
@@ -131,10 +127,10 @@
       srcdoc='
         <!DOCTYPE html>
         <html>
-          <body style="margin:0;padding:0;overflow:hidden;">
+          <body style="margin:0;padding:0;overflow:hidden;background:#f7f8fa;">
             <!-- EffectiveGate Native 2×2 Ad -->
             <script async data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
-            <div id="container-7f4f9e3cd3952cf029374d33707cf347"></div>
+            <div id="container-7f4f9e3cd3952cf029374d33707cf347" style="width:100%;height:100%;"></div>
           </body>
         </html>'
     ></iframe>
@@ -161,6 +157,7 @@
   <div class="ad-box">
     <iframe
       class="ad-safe"
+      style="height:60px;max-width:320px;"
       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       referrerpolicy="no-referrer"
       srcdoc='
