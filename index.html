@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Embedded Temp Mail Service" />
+  <meta name="description" content="Temp Mail Embedded with Responsive Ads" />
   <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
-  <title>Temp Mail - Embedded</title>
+  <title>Temp Mail - Clean Layout with Ads</title>
 
   <style>
+    /* ===== Base styling ===== */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: #f7f8fa;
+      background: #f9fafb;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       overflow-x: hidden;
     }
 
@@ -32,63 +30,73 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    .ad-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 8px 0;
-      background: #f7f8fa;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    iframe.ad-safe {
-      border: 0;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    /* Small top banner */
-    .ad-box iframe.ad-safe {
-      width: 320px;
-      height: 50px;
-      max-width: 320px;
-    }
-
-    .main-container {
+    /* ===== Layout container ===== */
+    .page-container {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      width: 100%;
-      max-width: 1200px;
-      padding: 10px;
-      box-sizing: border-box;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 0 10px;
+    }
+
+    .main-content {
       flex: 1;
+      max-width: 900px;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     iframe.main-frame {
-      flex: 1;
       border: none;
       width: 100%;
-      height: calc(100vh - 220px);
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      height: 80vh;
       border-radius: 8px;
-      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      background: #fff;
     }
 
     .no-iframe {
       text-align: center;
       padding: 2rem;
       color: #555;
-      font-size: 1rem;
     }
 
-    /* ✅ Floating small ad (bottom-right desktop / centered mobile) */
-    .floating-ad {
+    /* ===== Ad boxes ===== */
+    .ad-safe {
+      border: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .ad-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 15px 0;
+    }
+    .ad-top iframe {
+      width: 320px;
+      height: 50px;
+    }
+
+    .ad-side {
+      position: sticky;
+      top: 100px;
+      height: 600px;
+    }
+    .ad-side iframe {
+      width: 160px;
+      height: 600px;
+    }
+
+    .ad-floating {
       position: fixed;
       bottom: 15px;
       right: 15px;
@@ -97,37 +105,28 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       z-index: 9999;
       padding: 6px;
-      transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
     }
-
-    .floating-ad:hover {
-      transform: scale(1.03);
-    }
-
-    .floating-ad iframe.ad-safe {
+    .ad-floating iframe {
       width: 320px;
       height: 50px;
-      display: block;
     }
 
-    /* ✅ Mobile adjustments */
-    @media (max-width: 768px) {
+    /* ===== Mobile ===== */
+    @media (max-width: 1024px) {
+      .page-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .ad-side {
+        display: none; /* hide side ads on small screens */
+      }
       iframe.main-frame {
         height: 70vh;
       }
-
-      .floating-ad {
+      .ad-floating {
         left: 50%;
         right: auto;
         transform: translateX(-50%);
-        bottom: 12px;
-        width: 100%;
-        max-width: 340px;
-      }
-
-      .floating-ad iframe.ad-safe {
-        width: 100%;
-        height: 50px;
       }
     }
   </style>
@@ -136,71 +135,115 @@
 <body>
   <header>Temporary Email Address</header>
 
-  <!-- ✅ Top banner ad -->
-  <div class="ad-box">
-    <iframe
-      class="ad-safe"
-      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-      referrerpolicy="no-referrer"
-      srcdoc='
-        <!DOCTYPE html>
-        <html>
-          <body style="margin:0;padding:0;overflow:hidden;">
+  <div class="page-container">
+    <!-- ✅ Left Sticky Ad -->
+    <div class="ad-side">
+      <iframe
+        class="ad-safe"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        referrerpolicy="no-referrer"
+        srcdoc='
+          <!DOCTYPE html>
+          <html><body style="margin:0;padding:0;">
             <script>
               window.atOptions = {
                 key: "bbe4474f5e42c54d7802cff78dd8454f",
                 format: "iframe",
-                height: 50,
-                width: 320,
+                height: 600,
+                width: 160,
                 params: {}
               };
             </script>
             <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
-          </body>
-        </html>' 
-      title="Advertisement">
-    </iframe>
-  </div>
+          </body></html>'>
+      </iframe>
+    </div>
 
-  <!-- ✅ Main Temp Mail iframe -->
-  <div class="main-container">
-    <iframe
-      class="main-frame"
-      src="https://tempmail-f46o.onrender.com/"
-      title="Temp Mail"
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-      referrerpolicy="no-referrer"
-    >
-      <div class="no-iframe">
-        Sorry, your browser does not support iframes.  
-        <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
+    <!-- ✅ Main Content Area -->
+    <div class="main-content">
+      <!-- Top Banner Ad -->
+      <div class="ad-top">
+        <iframe
+          class="ad-safe"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+          referrerpolicy="no-referrer"
+          srcdoc='
+            <!DOCTYPE html>
+            <html><body style="margin:0;padding:0;">
+              <script>
+                window.atOptions = {
+                  key: "bbe4474f5e42c54d7802cff78dd8454f",
+                  format: "iframe",
+                  height: 50,
+                  width: 320,
+                  params: {}
+                };
+              </script>
+              <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
+            </body></html>'>
+        </iframe>
       </div>
-    </iframe>
+
+      <!-- TempMail Iframe -->
+      <iframe
+        class="main-frame"
+        src="https://tempmail-f46o.onrender.com/"
+        title="Temp Mail"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        referrerpolicy="no-referrer"
+      >
+        <div class="no-iframe">
+          Sorry, your browser does not support iframes.  
+          <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
+        </div>
+      </iframe>
+    </div>
+
+    <!-- ✅ Right Sticky Ad -->
+    <div class="ad-side">
+      <iframe
+        class="ad-safe"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        referrerpolicy="no-referrer"
+        srcdoc='
+          <!DOCTYPE html>
+          <html><body style="margin:0;padding:0;">
+            <script>
+              window.atOptions = {
+                key: "bbe4474f5e42c54d7802cff78dd8454f",
+                format: "iframe",
+                height: 600,
+                width: 160,
+                params: {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
+          </body></html>'>
+      </iframe>
+    </div>
   </div>
 
-  <!-- ✅ Floating 320×50 ad (always visible) -->
-  <div class="floating-ad">
+  <!-- ✅ Floating Bottom Ad -->
+  <div class="ad-floating">
     <iframe
       class="ad-safe"
       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       referrerpolicy="no-referrer"
       srcdoc='
         <!DOCTYPE html>
-        <html>
-          <body style="margin:0;padding:0;overflow:hidden;">
-            <script>
-              window.atOptions = {
-                key: "bbe4474f5e42c54d7802cff78dd8454f",
-                format: "iframe",
-                height: 50,
-                width: 320,
-                params: {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
-          </body>
-        </html>'>
+        <html><body style="margin:0;padding:0;">
+          <script>
+            window.atOptions = {
+              key: "bbe4474f5e42c54d7802cff78dd8454f",
+              format: "iframe",
+              height: 50,
+              width: 320,
+              params: {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
+        </body></html>'>
     </iframe>
   </div>
 </body>
