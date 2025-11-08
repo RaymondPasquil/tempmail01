@@ -34,7 +34,7 @@
       letter-spacing: 0.5px;
     }
 
-    iframe {
+    iframe.main-frame {
       border: none;
       width: 100%;
       max-width: 1200px;
@@ -62,7 +62,7 @@
     }
 
     @media (max-width: 768px) {
-      iframe {
+      iframe.main-frame {
         height: calc(100vh - 160px);
       }
     }
@@ -74,6 +74,7 @@
 
   <!-- ✅ Embedded Temp Mail site -->
   <iframe
+    class="main-frame"
     src="https://tempmail-f46o.onrender.com/"
     title="Temp Mail"
     loading="lazy"
@@ -86,18 +87,31 @@
     </div>
   </iframe>
 
-  <!-- ✅ Ad banner below iframe -->
+  <!-- ✅ Safe sandboxed ad banner (no redirect on mobile) -->
   <div class="ad-box">
-    <script type="text/javascript">
-      atOptions = {
-        'key': 'bbe4474f5e42c54d7802cff78dd8454f',
-        'format': 'iframe',
-        'height': 50,
-        'width': 320,
-        'params': {}
-      };
-    </script>
-    <script type="text/javascript" src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js"></script>
+    <iframe
+      srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <body style='margin:0;padding:0;overflow:hidden;'>
+            <script>
+              window.atOptions = {
+                key: 'bbe4474f5e42c54d7802cff78dd8454f',
+                format: 'iframe',
+                height: 50,
+                width: 320,
+                params: {}
+              };
+            </script>
+            <script src='https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js' async></script>
+          </body>
+        </html>"
+      width="320"
+      height="50"
+      sandbox="allow-scripts allow-same-origin allow-popups-by-user-activation"
+      style="border:0;overflow:hidden;border-radius:6px;"
+      title="Advertisement"
+    ></iframe>
   </div>
 </body>
 </html>
