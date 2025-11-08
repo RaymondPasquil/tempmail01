@@ -34,8 +34,7 @@
       z-index: 1000;
     }
 
-    /* Ad container styling */
-    .ad-box, .top-ad {
+    .ad-box {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -53,21 +52,35 @@
       border-radius: 6px;
     }
 
-    /* Bottom ad (now top) size */
+    /* ✅ Top ad (small banner) */
     .ad-box iframe.ad-safe {
       width: 320px;
       height: 50px;
       max-width: 320px;
     }
 
-    /* Native 2x2 ad (now bottom) size */
-    .top-ad iframe.ad-safe {
-      width: 100%;
-      max-width: 700px;
-      height: 350px;
+    /* ✅ Sticky bottom ad container */
+    .bottom-ad {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f7f8fa;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 5px 0;
+      height: 340px; /* enough room for the 2×2 layout */
     }
 
-    /* Main iframe container */
+    .bottom-ad iframe.ad-safe {
+      width: 100%;
+      max-width: 700px;
+      height: 330px;
+    }
+
     .main-container {
       display: flex;
       justify-content: center;
@@ -77,13 +90,14 @@
       padding: 10px;
       box-sizing: border-box;
       flex: 1;
+      margin-bottom: 360px; /* leave space so bottom ad doesn't cover content */
     }
 
     iframe.main-frame {
       flex: 1;
       border: none;
       width: 100%;
-      height: calc(100vh - 430px); /* adjust height to accommodate ads */
+      height: calc(100vh - 250px);
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -96,15 +110,22 @@
       font-size: 1rem;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      iframe.main-frame {
-        height: 70vh;
+      .bottom-ad {
+        height: 280px;
       }
 
-      .top-ad iframe.ad-safe {
+      .bottom-ad iframe.ad-safe {
         max-width: 340px;
-        height: 250px;
+        height: 270px;
+      }
+
+      .main-container {
+        margin-bottom: 300px;
+      }
+
+      iframe.main-frame {
+        height: 70vh;
       }
     }
   </style>
@@ -113,7 +134,7 @@
 <body>
   <header>Temporary Email Address</header>
 
-  <!-- Bottom banner ad moved TO TOP -->
+  <!-- ✅ Top banner ad -->
   <div class="ad-box">
     <iframe
       class="ad-safe"
@@ -134,12 +155,12 @@
             </script>
             <script src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js" async></script>
           </body>
-        </html>'
-      title="Advertisement"
-    ></iframe>
+        </html>' 
+      title="Advertisement">
+    </iframe>
   </div>
 
-  <!-- Embedded Temp Mail site -->
+  <!-- ✅ Main iframe -->
   <div class="main-container">
     <iframe
       class="main-frame"
@@ -156,8 +177,8 @@
     </iframe>
   </div>
 
-  <!-- Native 2x2 ad moved TO BOTTOM -->
-  <div class="top-ad">
+  <!-- ✅ Sticky bottom ad (2×2 layout) -->
+  <div class="bottom-ad">
     <iframe
       class="ad-safe"
       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
@@ -166,12 +187,11 @@
         <!DOCTYPE html>
         <html>
           <body style="margin:0;padding:0;overflow:hidden;background:#f7f8fa;">
-            <!-- EffectiveGate Native 2×2 Ad -->
-            <script async data-cfasync="false" src="//pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
+            <script async data-cfasync="false" src="https://pl28011982.effectivegatecpm.com/7f4f9e3cd3952cf029374d33707cf347/invoke.js"></script>
             <div id="container-7f4f9e3cd3952cf029374d33707cf347" style="width:100%;height:100%;"></div>
           </body>
-        </html>'
-    ></iframe>
+        </html>'>
+    </iframe>
   </div>
 </body>
 </html>
