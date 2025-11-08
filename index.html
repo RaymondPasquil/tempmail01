@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Embedded Temp Mail Service" />
 
-  <!-- ✅ Google AdSense site verification -->
+  <!-- ✅ Google AdSense verification -->
   <meta name="google-adsense-account" content="ca-pub-1017875629935097" />
 
   <title>Temp Mail - Embedded</title>
@@ -20,7 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     header {
@@ -38,7 +38,7 @@
       border: none;
       width: 100%;
       max-width: 1200px;
-      height: calc(100vh - 80px);
+      height: calc(100vh - 180px);
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -51,9 +51,19 @@
       font-size: 1rem;
     }
 
+    /* ✅ Ad container styling */
+    .ad-box {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       iframe {
-        height: calc(100vh - 100px);
+        height: calc(100vh - 160px);
       }
     }
   </style>
@@ -62,6 +72,7 @@
 <body>
   <header>Temp Mail - Embedded Viewer</header>
 
+  <!-- ✅ Embedded Temp Mail site -->
   <iframe
     src="https://tempmail-f46o.onrender.com/"
     title="Temp Mail"
@@ -74,5 +85,19 @@
       <a href="https://tempmail-f46o.onrender.com/" target="_blank">Click here</a> to open Temp Mail directly.
     </div>
   </iframe>
+
+  <!-- ✅ Ad banner below iframe -->
+  <div class="ad-box">
+    <script type="text/javascript">
+      atOptions = {
+        'key': 'bbe4474f5e42c54d7802cff78dd8454f',
+        'format': 'iframe',
+        'height': 50,
+        'width': 320,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="https://www.highperformanceformat.com/bbe4474f5e42c54d7802cff78dd8454f/invoke.js"></script>
+  </div>
 </body>
 </html>
